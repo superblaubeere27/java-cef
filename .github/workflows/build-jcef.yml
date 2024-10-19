@@ -80,6 +80,7 @@ jobs:
           brew install ninja
           brew install coreutils
           brew install s3cmd
+          brew install six
           sudo xcode-select --switch /Applications/Xcode_13.1.app
           mkdir jcef_build && cd jcef_build
           cmake -G "Ninja" -DPROJECT_ARCH=${{ matrix.platform }} -DCMAKE_BUILD_TYPE=Release ..
