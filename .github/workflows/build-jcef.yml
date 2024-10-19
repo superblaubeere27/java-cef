@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Upload mask
         run: echo "::add-mask::${{ secrets.UPLOAD_URL }}"
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install deps and build
         run: |
           sudo apt update
@@ -43,7 +43,7 @@ jobs:
     steps:
       - name: Upload mask
         run: echo "::add-mask::${{ secrets.UPLOAD_URL }}"
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ilammy/msvc-dev-cmd@v1
       - name: Install s3cmd
         run: |
@@ -75,13 +75,11 @@ jobs:
     steps:
       - name: Upload mask
         run: echo "::add-mask::${{ secrets.UPLOAD_URL }}"
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: |
           brew install ninja
           brew install coreutils
           brew install s3cmd
-          pip uninstall six
-          pip install --user six
           sudo xcode-select --switch /Applications/Xcode_13.1.app
           mkdir jcef_build && cd jcef_build
           cmake -G "Ninja" -DPROJECT_ARCH=${{ matrix.platform }} -DCMAKE_BUILD_TYPE=Release ..
