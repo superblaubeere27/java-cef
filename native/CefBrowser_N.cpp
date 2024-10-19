@@ -65,6 +65,7 @@ int GetCefModifiersGlfw(JNIEnv* env, jclass cls, int modifiers) {
   return cef_modifiers;
 }
 
+#if defined(OS_WIN)
 long MapScanCodeGLFW(JNIEnv* env, jclass cls, int key_char, int scanCode) {
   JNI_STATIC_DEFINE_INT_RV(env, cls, GLFW_KEY_DELETE, 0);
   JNI_STATIC_DEFINE_INT_RV(env, cls, GLFW_KEY_LEFT, 0);
@@ -135,6 +136,7 @@ long MapScanCodeGLFW(JNIEnv* env, jclass cls, int key_char, int scanCode) {
   ) return 28;
   return scanCode;
 }
+#endif  // defined(OS_WIN)
 
 #if defined(OS_LINUX)
 
