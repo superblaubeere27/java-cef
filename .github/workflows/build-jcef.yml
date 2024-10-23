@@ -16,6 +16,11 @@ jobs:
       - name: Upload mask
         run: echo "::add-mask::${{ secrets.UPLOAD_URL }}"
       - uses: actions/checkout@v4
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '8'
+          distribution: 'temurin'
       - name: Install deps and build
         run: |
           sudo apt update
@@ -44,6 +49,11 @@ jobs:
       - name: Upload mask
         run: echo "::add-mask::${{ secrets.UPLOAD_URL }}"
       - uses: actions/checkout@v4
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '8'
+          distribution: 'temurin'
       - uses: ilammy/msvc-dev-cmd@v1
       - name: Install s3cmd
         run: |
@@ -76,6 +86,11 @@ jobs:
       - name: Upload mask
         run: echo "::add-mask::${{ secrets.UPLOAD_URL }}"
       - uses: actions/checkout@v4
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '8'
+          distribution: 'temurin'
       - run: |
           brew install ninja
           brew install coreutils
