@@ -59,7 +59,7 @@ public class CefDevToolsClient implements AutoCloseable {
     }
 
     private CompletableFuture<String> getQueuedCommand(Integer messageId) {
-        return queuedCommands_.computeIfAbsent(messageId, _ -> new CompletableFuture<>());
+        return queuedCommands_.computeIfAbsent(messageId, id -> new CompletableFuture<>());
     }
 
     /**

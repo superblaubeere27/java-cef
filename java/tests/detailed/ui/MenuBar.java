@@ -404,7 +404,7 @@ public class MenuBar extends JMenuBar {
                 // events. We can only enable the CSS agent if the DOM agent is enabled first, so we
                 // need to chain the two commands.
                 executeDevToolsMethod("DOM.enable")
-                        .thenCompose(_ -> executeDevToolsMethod("CSS.enable"));
+                        .thenCompose(result -> executeDevToolsMethod("CSS.enable"));
             }
         });
         testMenu.add(devToolsProtocolMenu);
