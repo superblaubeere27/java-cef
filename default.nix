@@ -55,14 +55,15 @@ let
       };
     }
     .${platform};
+    git_info = builtins.fetchGit ./.;
   cef_version = "135.0.20+ge7de5c3+chromium-135.0.7049.85";
   inherit (arches) depsArch projectArch targetArch;
 
 in
 pkgs.stdenv.mkDerivation rec {
   pname = "jcef-ccbluex";
-  rev = "eaeb3d4370aa3526ee237ad1981ad59af3de4dd1";
-  version = "458";
+  rev = git_info.rev;
+  version = git_info.revCount;
 
   nativeBuildInputs = with pkgs; [
     cmake
