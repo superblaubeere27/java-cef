@@ -55,6 +55,7 @@ let
       };
     }
     .${platform};
+  cef_version = "135.0.20+ge7de5c3+chromium-135.0.7049.85";
   inherit (arches) depsArch projectArch targetArch;
 
 in
@@ -84,18 +85,11 @@ pkgs.stdenv.mkDerivation rec {
     thrift
   ];
 
-  #src = fetchFromGitHub {
-  #       owner = "CCBlueX";
-  #       repo = "java-cef";
-  #     inherit rev;
-  #       hash = "sha256-V/RlPp6a8ouVbUWwyPPU2hcsUlUXhVicc2yaPyi3GO0=";
-  #};
-
   src = ./.;
   cef-bin =
     let
       # `cef_binary_${CEF_VERSION}_linux64_minimal`, where CEF_VERSION is from $src/CMakeLists.txt
-      name = "cef_binary_122.1.10+gc902316+chromium-122.0.6261.112_${platform}";
+      name = "cef_binary_${cef_version}_${platform}";
       hash =
         {
           "linux64" = "sha256-4EGKJgfRon4vkbwq14V5gSlph0Z5sjVnrzWv9nlQ20Q=";
