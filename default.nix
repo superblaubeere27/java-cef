@@ -61,6 +61,8 @@ let
 in
 pkgs.stdenv.mkDerivation rec {
   pname = "jcef-ccbluex";
+  rev = "eaeb3d4370aa3526ee237ad1981ad59af3de4dd1";
+  version = "25.07.14";
 
   nativeBuildInputs = with pkgs; [
     cmake
