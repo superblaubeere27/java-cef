@@ -55,16 +55,12 @@ let
       };
     }
     .${platform};
+  cef_version = "135.0.20+ge7de5c3+chromium-135.0.7049.85";
   inherit (arches) depsArch projectArch targetArch;
 
 in
 pkgs.stdenv.mkDerivation rec {
   pname = "jcef-ccbluex";
-  rev = "06399a49d24f2c372668ccce26a15c533199ec9e";
-  # This is the commit number
-  # Currently from the branch: https://github.com/JetBrains/jcef/tree/242
-  # Run `git rev-list --count HEAD`
-  version = "867";
 
   nativeBuildInputs = with pkgs; [
     cmake
@@ -84,18 +80,11 @@ pkgs.stdenv.mkDerivation rec {
     thrift
   ];
 
-  #src = fetchFromGitHub {
-  #       owner = "CCBlueX";
-  #       repo = "java-cef";
-  #     inherit rev;
-  #       hash = "sha256-V/RlPp6a8ouVbUWwyPPU2hcsUlUXhVicc2yaPyi3GO0=";
-  #};
-
   src = ./.;
   cef-bin =
     let
       # `cef_binary_${CEF_VERSION}_linux64_minimal`, where CEF_VERSION is from $src/CMakeLists.txt
-      name = "cef_binary_122.1.10+gc902316+chromium-122.0.6261.112_${platform}";
+      name = "cef_binary_${cef_version}_${platform}";
       hash =
         {
           "linux64" = "sha256-4EGKJgfRon4vkbwq14V5gSlph0Z5sjVnrzWv9nlQ20Q=";
@@ -112,7 +101,7 @@ pkgs.stdenv.mkDerivation rec {
     url = "https://storage.googleapis.com/chromium-clang-format/dd736afb28430c9782750fc0fd5f0ed497399263";
     hash = "sha256-4H6FVO9jdZtxH40CSfS+4VESAHgYgYxfCBFSMHdT0hE=";
   };
-  releaseName = { 
+  releaseName = {
           "linux64" = "linux_amd64";
   }.${platform};
 
