@@ -63,7 +63,7 @@ in
 pkgs.stdenv.mkDerivation rec {
   pname = "jcef-ccbluex";
   rev = git_info.rev;
-  version = git_info.revCount;
+  version = builtins.toString (git_info.revCount);
 
   nativeBuildInputs = with pkgs; [
     cmake
